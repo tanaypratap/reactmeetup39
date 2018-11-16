@@ -99,14 +99,18 @@ function traverseLinear(cur, lim) {
     return {cur, result};
 }
 
+
+
 function linearHandler() {
     let sum = 0, cur = root;
-    for(let i = 0; i < 10; i++) {
-        setTimeout(() => {
-            let res = traverseLinear(cur, SIZE / 10);
-            sum += res.result;
-            cur = res.cur;
-        }, 0)
-    }
-    setTimeout(() => console.log(sum), 0);
+    // for(let i = 0; i < 10; i++) {
+    //     setTimeout(() => {
+    //         let res = traverseLinear(cur, SIZE / 10);
+    //         sum += res.result;
+    //         cur = res.cur;
+    //     }, 0)
+    // }
+    // setTimeout(() => console.log(sum), 0);
+
+
 }
