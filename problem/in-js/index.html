@@ -2,6 +2,7 @@
     <head>
         <script src="animate.js"></script>
         <script src="compute-intensive-work.js"></script>
+        <script src="main.js"></script>
         <script>
             function showCoords(event) {
                 const { clientX, clientY } = event;
@@ -12,9 +13,7 @@
         <link href="main-styles.css" rel="stylesheet">
     </head>
     <body>
-        <div id="canvas">
-        </div>
-
+        <canvas id="canvas" height="300px"></canvas>
         <div id="test-input">
             <label> Type Something: </label> <input type="text"></input>
         </div>
@@ -30,6 +29,9 @@
         </div>
 
         <div id="compute-intensive-progress">No sleeping!</div>
+
+        <button onclick="recursiveHandler()">Recursive Traversal</button>
+        <button onclick="linearHandler()">Linear Traversal</button>
 
     </body>
 </html>

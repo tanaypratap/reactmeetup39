@@ -1,51 +1,77 @@
 'use strict';
 
+class JustABlot extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {}
+    }
+
+    shouldComponentUpdate() {
+        this.sleep(5)
+    }
+
+    sleep = (milliseconds) => {
+        var start = new Date().getTime();
+        for (var i = 0; i < 1e7; i++) {
+          if ((new Date().getTime() - start) > milliseconds){
+            break;
+          }
+        }
+      }
+    
+
+    render() {
+        return (
+            <span id="blot"> {this.props.number } </span>
+        )
+    }
+}
 
 class Root extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: ''};
+    this.state = { value: '', randomNumbers: [] };
+    this.poolofNumbers = [],
+    this.start = 0;
+    this.end = 1000;
+    setTimeout(this.init.bind(this), 0);
+  }
+
+  init = () => {
+    const randNums = [];
+    for(let i=0; i<100000; i++) {
+        let numGen = Math.floor(Math.random() * (20000 - 1000 + 1)) + 1000;
+        randNums.push(numGen)
+    }
+    this.poolofNumbers = randNums
+  }
+
+  typingHandler = (event) => {
+    const randomNumbers = this.state.randomNumbers.concat(this.poolofNumbers.slice(this.start, this.end));
+    this.start = this.end;
+    this.end = this.end + 1000;
+    this.setState({ randomNumbers, value: event.target.value })
   }
 
   render() {
    return <div>
       <h2> Demo App </h2>
       <div>
-        <label> Just type: </label> <input type="text" value={this.state.value} onChange={(event) => this.setState({ value: event.target.value})}></input>
+        <label> Just type: </label> 
+        <input 
+            type="text" 
+            value={this.state.value} 
+            onChange={this.typingHandler}>
+        </input>
+        <div>
+            {
+                this.state.randomNumbers.map(num => <JustABlot number={num} />)
+            }
+        </div>
       </div>
       <div>
-        <h3> Movies </h3>
-        <div id="movie-list">
-          {
-            movieData.filter((movie) => {
-              if (this.state.value.length === 0 ) {
-                return true
-              }
-              
-              return  movie.title.indexOf(this.state.value) > 0
-              
-              }).map(movie => (
-              <div key={movie.title} id="movie-card">
-                <h4> { movie.title } </h4>
-                <p> { movie.year } </p>
-                <p> { movie.genres.map(genre => <span id="genre"> { genre }</span>) } </p>
 
-                <p id="starring"> Starring: </p>
-                <ul>
-                {
-                  movie.cast.map(actor => {
-                   return  <li>
-                      { actor }
-                    </li>
-                  })
-                }
-                </ul>
-              
-              </div>
-            ))
-          }
-        </div>
-       
+        
       </div>
     </div>
 }
