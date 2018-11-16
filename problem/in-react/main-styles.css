@@ -1,0 +1,13 @@
+#movie-list {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 10px;
+    grid-row-gap:10px;
+}
+
+#movie-card {
+    background: #eee8e8;
+    padding: 30px;
+    margin: 10px;
+    max-width: 300px;
+}
