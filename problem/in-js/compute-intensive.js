@@ -64,18 +64,21 @@ function delay() {
   }
 }
 
+/** */
 function recursiveSum(cur) {
     if (cur == null) {
         return 0;
     }
-
     delay()
     return cur.val + recursiveSum(cur.next);
 }
 
+/**
+ * Click Handler : Thread Blocking
+ */
 function recursiveHandler() {
   var sum = recursiveSum(root);
-  showSum(`Recursive Summation Done:  ${sum}`);
+  showSum(`Thread-Blocking Summation Done:  ${sum}`);
 }
 
 
@@ -105,14 +108,14 @@ const traverseTree = (sum, cur) => (deadline) => {
     }
 
     if (cur === null) {
-        showSum(`Linear Summation Done: ${sum}`);
+        showSum(`Non Thread-Blocking Summation Done: ${sum}`);
     }
 
 }
 
 
 /**
- * Click Handler
+ * Click Handler: Non Thread Blocking
  */
 function linearHandler() {
     let sum = 0, cur = root;
