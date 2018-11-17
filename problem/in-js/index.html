@@ -1,8 +1,13 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
+        <meta charset="utf-8">
+        <title>Under the Hood</title>
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="animate.js"></script>
-        <script src="compute-intensive-work.js"></script>
-        <script src="main.js"></script>
+        <script src="compute-intensive.js"></script>
         <script>
             function showCoords(event) {
                 const { clientX, clientY } = event;
@@ -11,27 +16,37 @@
             }
         </script>
         <link href="main-styles.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </head>
     <body>
-        <canvas id="canvas" height="300px"></canvas>
-        <div id="test-input">
-            <label> Type Something: </label> <input type="text"></input>
-        </div>
-
-        <div id="click-coords-btn">
-                <button onclick="showCoords(event)"> Click to know where you clicked </button>
-        </div>
-
-        <div id="click-coords"></div>
+        <div class="main-container class="w3-container w3-center">
+            <div class="w3-center">
+                <h3> The world doesn't revolve around you! </h3>
+                <canvas id="canvas" height="300px"></canvas>
+            </div>
         
-        <div id="compute-intensive-btn">
-            <button onclick="doComputeIntensive()"> Do Compute Intensive Work </button>
+            <div>
+                <h3> Does input respond? </h3>
+                <div>
+                    <input class="w3-input"  placeholder="just type something" type="text"></input>
+                </div>
+            </div>
+
+            <div>
+                <h3> Is click working? </h3>
+                <div id="click-coords-btn">
+                    <button onclick="showCoords(event)"> CLICK SOMEWHERE ON THE BUTTON </button>
+                </div>
+                
+                <div id="click-coords"></div>
+            </div>
+            
+            <div class="w3-center">
+                <h3> Compute Intensive Tasks </h3>
+                <button class="w3-button w3-red" onclick="recursiveHandler()">THREAD BLOCKING</button>
+                <button class="w3-button w3-green" onclick="linearHandler()">THREAD NON BLOCKING</button>
+                <h4 id="compute-intensive-output"> Output will come here </h4>
+            </div>
         </div>
-
-        <div id="compute-intensive-progress">No sleeping!</div>
-
-        <button onclick="recursiveHandler()">Recursive Traversal</button>
-        <button onclick="linearHandler()">Linear Traversal</button>
-
     </body>
 </html>

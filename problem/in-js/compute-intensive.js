@@ -11,6 +11,10 @@ window.requestIdleCallback =  window.requestIdleCallback || function (handler) {
     }, 1);
 };
 
+function showSum(sum) {
+    document.getElementById("compute-intensive-output").innerHTML = sum;
+}
+
 class QNode {
     constructor(val, next) {
         this.val = val;
@@ -47,7 +51,6 @@ function createQueue(size) {
         size--;
     }
 
-    console.log(queue)
     return queue;
 
 }
@@ -72,7 +75,7 @@ function recursiveSum(cur) {
 
 function recursiveHandler() {
   var sum = recursiveSum(root);
-  console.log('Recursive Summation Done...', sum);
+  showSum(`Recursive Summation Done:  ${sum}`);
 }
 
 
@@ -102,7 +105,7 @@ const traverseTree = (sum, cur) => (deadline) => {
     }
 
     if (cur === null) {
-        console.log('Linear Summation Done...', sum)
+        showSum(`Linear Summation Done: ${sum}`);
     }
 
 }
