@@ -1,3 +1,6 @@
+/**
+ * requestIdleCallback polyfill
+ */
 window.requestIdleCallback =  window.requestIdleCallback || function (handler) {
     let startTime = Date.now();
 
@@ -11,6 +14,9 @@ window.requestIdleCallback =  window.requestIdleCallback || function (handler) {
     }, 1);
 };
 
+/**
+ * Output on client
+ */
 function showSum(sum) {
     document.getElementById("compute-intensive-output").innerHTML = sum;
 }
@@ -64,7 +70,9 @@ function delay() {
   }
 }
 
-/** */
+/** 
+* Recursive sum. Same as what React Stack used to do
+*/
 function recursiveSum(cur) {
     if (cur == null) {
         return 0;
@@ -80,6 +88,11 @@ function recursiveHandler() {
   var sum = recursiveSum(root);
   showSum(`Thread-Blocking Summation Done:  ${sum}`);
 }
+
+/**
+ * How to solve this issue?
+ */
+
 
 
 
