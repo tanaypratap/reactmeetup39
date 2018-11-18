@@ -1,4 +1,8 @@
-// For solar system animation
+/**
+ * @description Solar System Animation
+ *    This is to show that animation doesn't drop when process batching is done using requestIdleCallback
+ *    Code is taken from mdn canvas animation docs
+ */
 var sun = new Image();
 var moon = new Image();
 var earth = new Image();
